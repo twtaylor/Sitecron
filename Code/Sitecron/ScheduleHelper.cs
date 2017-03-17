@@ -37,11 +37,14 @@ namespace Sitecron
 
                         //get a list of all items in Sitecron folder and iterate through them
                         //add them to the schedule
-                        string queryRetriveJobs = "fast:/sitecore/system/Modules/Sitecron//*[@@templateid = '{7F2C8881-6AE4-48CF-A499-7745CC4B2EB2}']";
+                        //string queryRetriveJobs = "fast:/sitecore/system/Modules/Sitecron//*[@@templateid = '{7F2C8881-6AE4-48CF-A499-7745CC4B2EB2}']";
 
                         scheduler.Clear();
 
-                        Item[] sitecronJobs = masterDb.SelectItems(queryRetriveJobs);
+                        //Item[] sitecronJobs = masterDb.SelectItems(queryRetriveJobs);
+
+                        var sitecron = masterDb.GetItem("/sitecore/system/Modules/Sitecron");
+                        var sitecronJobs = sitecron.GetChildren();
 
                         Log.Info("Loading Sitecron Jobs", this);
 
